@@ -1,0 +1,10 @@
+[general]
+name = "math"
+version = "0.1.0"
+
+[build]
+files = ["math.fix"]
+dynamic_links = ["m"]
+
+[build.test]
+files = ["test.fix"]
