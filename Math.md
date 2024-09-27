@@ -46,7 +46,7 @@ This is wrapper of C's atan2.
 
 Calculates table (2-dimensional array) of binomial coefficients.
 
-Deprecated: I will move this functio to another library.
+Deprecated: this function will be moved to another project in the future.
 
 `binomial_coefficients(m)` evaluates to an array of arrays `table` where `table.@(n).@(r)` is the binomial coefficient "binom(n, r)" for 0 <= n <= m and 0 <= r <= n.
 Here `m` has to be less than or equal to 66 to avoid overflow.
@@ -98,6 +98,7 @@ This is wrapper of C's frexp.
 ### `gcd : Std::I64 -> Std::I64 -> Std::I64`
 
 Calculates greatest common divisor of two integers.
+Deprecated: this function will be moved to another project in the future.
 
 NOTE: currently, this function does not support I64::minimum.
 
