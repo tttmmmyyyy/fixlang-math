@@ -1,6 +1,7 @@
 [general]
 name = "math"
 version = "1.0.0"
+description = "Provides wrapper of C functions defined in math.h."
 
 [build]
 files = ["math.fix"]
