@@ -69,6 +69,14 @@ Calculates the hyperbolic cosine of the argument.
 
 This is wrapper of C's cosh.
 
+### `e32 : Std::F32`
+
+Napier's constant as F32
+
+### `e64 : Std::F64`
+
+Napier's constant as F64
+
 ### `exp : Std::F64 -> Std::F64`
 
 Calculates the natural exponential of the argument.
