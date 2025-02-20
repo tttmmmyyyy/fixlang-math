@@ -21,7 +21,7 @@ asin = |x| FFI_CALL[F64 asin(F64), x];
 atan : F64 -> F64;
 atan = |x| FFI_CALL[F64 atan(F64), x];
 
-// Calculates arc tangent of y/x for argument x, y.
+// `atan2(y, x)` calculates an angle t such that (cos(t), sin(t)) is parallel to (x, y).
 // 
 // This is wrapper of C's atan2.
 atan2 : F64 -> F64 -> F64;
