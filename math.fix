@@ -78,6 +78,10 @@ exp = |x| FFI_CALL[F64 exp(F64), x];
 floor : F64 -> F64;
 floor = |x| FFI_CALL[F64 floor(F64), x];
 
+// Calculates the nearest integral value to the argument.
+round : F64 -> F64;
+round = |x| FFI_CALL[F64 round(F64), x];
+
 // Calculates the floating point remainder of division. 
 // 
 // `x.fmod(y)` evaluates to the remainder of dividing x by y.

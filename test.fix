@@ -41,6 +41,7 @@ test = (
     assert(|_|"case sqrt", (sqrt(0.2) - 0.4472135954999579).abs < 1.0e-8);;
     assert(|_|"case tan", (tan(0.2) - 0.2027100355086725).abs < 1.0e-8);;
     assert(|_|"case tanh", (tanh(0.2) - 0.197375320224904).abs < 1.0e-8);;
+    assert(|_|"case round", (round(1.5) - 2.0).abs < 1.0e-8);;
 
     pure()
 );
