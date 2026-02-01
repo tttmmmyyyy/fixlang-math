@@ -1,6 +1,10 @@
 module Test;
 
-import Math;
+import Math::{
+    acos, asin, atan, atan2, ceil, cos, cosh, exp, floor, fmod, frexp, gcd, ldexp, log, log10, modf, pow, 
+    round, sin, sinh, sqrt, tan, tanh
+};
+import Std::{F64, IO, Debug::{assert, assert_eq}, F64::abs, I32::abs, Monad::pure, Tuple2::{@0, @1}};
 
 test : IO ();
 test = (

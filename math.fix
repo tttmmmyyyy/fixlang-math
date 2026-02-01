@@ -3,6 +3,11 @@
 // This module requires `libm` installed.
 module Math;
 
+import Std::{
+    undefined, Array, F32, F64, I32, I64, Array::{empty, fill, mod, push_back, set, @}, 
+    FFI::borrow_boxed, I64::abs, Iterator::{fold, range}
+};
+
 // Calculates arc cosine of the argument.
 // 
 // This is wrapper of C's acos.
