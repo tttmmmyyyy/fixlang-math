@@ -4,8 +4,8 @@
 module Math;
 
 import Std::{
-    undefined, Array, F32, F64, I32, I64, Array::{empty, fill, mod, push_back, set, @}, 
-    FFI::borrow_boxed, I64::abs, Iterator::{fold, range}
+    undefined, Array, F32, F64, I32, I64, Array::{empty, fill, mod, push_back, set, @, _unsafe_grow_size}, 
+    Array::borrow_elements, I64::abs, Iterator::{fold, range}
 };
 
 // Calculates arc cosine of the argument.
@@ -100,8 +100,8 @@ fmod = |y, x| FFI_CALL[F64 fmod(F64, F64), x, y];
 // This is wrapper of C's frexp. 
 frexp : F64 -> (F64, I32);
 frexp = |x| (
-    let e = Array::fill(1, 0_I32);
-    let f = e.borrow_boxed(|ptr| FFI_CALL[F64 frexp(F64, Ptr), x, ptr]);
+    let e = Array::empty(1)._unsafe_grow_size(1);
+    let f = e.borrow_elements(|ptr| FFI_CALL[F64 frexp(F64, Ptr), x, ptr]);
     (f, e.@(0))
 );
 
@@ -144,8 +144,8 @@ log10 = |x| FFI_CALL[F64 log10(F64), x];
 // This is wrapper of C's modf.
 modf : F64 -> (F64, F64);
 modf = |x| (
-    let int = Array::fill(1, 0.0);
-    let fr = int.borrow_boxed(|ptr| FFI_CALL[F64 modf(F64, Ptr), x, ptr]);
+    let int = Array::empty(1)._unsafe_grow_size(1);
+    let fr = int.borrow_elements(|ptr| FFI_CALL[F64 modf(F64, Ptr), x, ptr]);
     (fr, int.@(0))
 );
 
