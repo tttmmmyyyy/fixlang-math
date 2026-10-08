@@ -11,26 +11,39 @@ import Std::{
 // Calculates arc cosine of the argument.
 // 
 // This is wrapper of C's acos.
+//
+// # Parameters
+// * `x` - The cosine of the angle, in [-1, 1].
 acos : F64 -> F64;
 acos = |x| FFI_CALL[F64 acos(F64), x];
 
 // Calculates arc sine of the argument.
 // 
 // This is wrapper of C's asin.
+//
+// # Parameters
+// * `x` - The sine of the angle, in [-1, 1].
 asin : F64 -> F64;
 asin = |x| FFI_CALL[F64 asin(F64), x];
 
 // Calculates arc tangent of the argument.
 // 
 // This is wrapper of C's atan.
+//
+// # Parameters
+// * `x` - The tangent of the angle.
 atan : F64 -> F64;
 atan = |x| FFI_CALL[F64 atan(F64), x];
 
 // `atan2(y, x)` calculates an angle t such that (cos(t), sin(t)) is parallel to (x, y).
 // 
 // This is wrapper of C's atan2.
+//
+// # Parameters
+// * `y` - The y-coordinate of the point.
+// * `x` - The x-coordinate of the point.
 atan2 : F64 -> F64 -> F64;
-atan2 = |x, y| FFI_CALL[F64 atan2(F64, F64), x, y];
+atan2 = |y, x| FFI_CALL[F64 atan2(F64, F64), y, x];
 
 // Calculates table (2-dimensional array) of binomial coefficients.
 // 
@@ -38,6 +51,9 @@ atan2 = |x, y| FFI_CALL[F64 atan2(F64, F64), x, y];
 //
 // `binomial_coefficients(m)` evaluates to an array of arrays `table` where `table.@(n).@(r)` is the binomial coefficient "binom(n, r)" for 0 <= n <= m and 0 <= r <= n.
 // Here `m` has to be less than or equal to 66 to avoid overflow.
+//
+// # Parameters
+// * `m` - The largest `n` of the table, in [0, 66].
 binomial_coefficients : I64 -> Array (Array I64);
 binomial_coefficients = |m| (
     if !(0 <= m && m <= 66) { undefined("[Math::binomial_coefficients] The argument must be non-negative and less than or equal to 66.") };
@@ -56,34 +72,52 @@ binomial_coefficients = |m| (
 // Calculates the smallest integral value not less than the argument.
 // 
 // This is wrapper of C's ceil.
+//
+// # Parameters
+// * `x` - The number to round up.
 ceil : F64 -> F64;
 ceil = |x| FFI_CALL[F64 ceil(F64), x];
 
 // Calculates the cosine of the argument.
 // 
 // This is wrapper of C's cos.
+//
+// # Parameters
+// * `x` - The angle, in radians.
 cos : F64 -> F64;
 cos = |x| FFI_CALL[F64 cos(F64), x];
 
 // Calculates the hyperbolic cosine of the argument.
 // 
 // This is wrapper of C's cosh.
+//
+// # Parameters
+// * `x` - The argument of the hyperbolic cosine.
 cosh : F64 -> F64;
 cosh = |x| FFI_CALL[F64 cosh(F64), x];
 
 // Calculates the natural exponential of the argument.
 // 
 // This is wrapper of C's exp.
+//
+// # Parameters
+// * `x` - The exponent.
 exp : F64 -> F64;
 exp = |x| FFI_CALL[F64 exp(F64), x];
 
 // Calculates the largest integral value not greater than the argument.
 // 
 // This is wrapper of C's floor.
+//
+// # Parameters
+// * `x` - The number to round down.
 floor : F64 -> F64;
 floor = |x| FFI_CALL[F64 floor(F64), x];
 
 // Calculates the nearest integral value to the argument.
+//
+// # Parameters
+// * `x` - The number to round.
 round : F64 -> F64;
 round = |x| FFI_CALL[F64 round(F64), x];
 
@@ -92,12 +126,19 @@ round = |x| FFI_CALL[F64 round(F64), x];
 // `x.fmod(y)` evaluates to the remainder of dividing x by y.
 // 
 // This is wrapper of C's fmod.
+//
+// # Parameters
+// * `y` - The divisor.
+// * `x` - The dividend.
 fmod : F64 -> F64 -> F64;
 fmod = |y, x| FFI_CALL[F64 fmod(F64, F64), x, y];
 
 // Splits a floating point number to normalized fraction and an exponent.
 // 
 // This is wrapper of C's frexp. 
+//
+// # Parameters
+// * `x` - The number to split.
 frexp : F64 -> (F64, I32);
 frexp = |x| (
     let e = Array::empty(1)._unsafe_grow_size(1);
@@ -109,10 +150,18 @@ frexp = |x| (
 // Deprecated: this function will be moved to another project in the future.
 // 
 // NOTE: currently, this function does not support I64::minimum.
+//
+// # Parameters
+// * `n` - One of the integers.
+// * `m` - The other integer.
 gcd : I64 -> I64 -> I64;
 gcd = |n, m| _gcd_nonneg(n.abs, m.abs);
 
 // Calculates greatest common divisor of two non-negative integers. 
+//
+// # Parameters
+// * `n` - One of the integers, non-negative.
+// * `m` - The other integer, non-negative.
 _gcd_nonneg : I64 -> I64 -> I64;
 _gcd_nonneg = |n, m| (
     if n > m { _gcd_nonneg(m, n) };
@@ -124,24 +173,37 @@ _gcd_nonneg = |n, m| (
 // Multiplies a floating point number by power of two.
 // 
 // This is wrapper of C's ldexp. 
+//
+// # Parameters
+// * `e` - The exponent of two.
+// * `x` - The number to multiply.
 ldexp : I32 -> F64 -> F64;
 ldexp = |e, x| FFI_CALL[F64 ldexp(F64, I32), x, e];
 
 // Calculates natural logarithm.
 // 
 // This is wrapper of C's log. 
+//
+// # Parameters
+// * `x` - The number to take the logarithm of.
 log : F64 -> F64;
 log = |x| FFI_CALL[F64 log(F64), x];
 
 // Calculates base-10 logarithm.
 // 
 // This is wrapper of C's log10. 
+//
+// # Parameters
+// * `x` - The number to take the logarithm of.
 log10 : F64 -> F64;
 log10 = |x| FFI_CALL[F64 log10(F64), x];
 
 // Converts a floating pointer number into the pair of fractional part and integral part.
 // 
 // This is wrapper of C's modf.
+//
+// # Parameters
+// * `x` - The number to split.
 modf : F64 -> (F64, F64);
 modf = |x| (
     let int = Array::empty(1)._unsafe_grow_size(1);
@@ -170,35 +232,54 @@ e64 = 2.718281828459045;
 // `x.pow(y)` evaluates to x^y.
 // 
 // This is wrapper of C's pow.
+//
+// # Parameters
+// * `y` - The exponent.
+// * `x` - The base.
 pow : F64 -> F64 -> F64;
 pow = |y, x| FFI_CALL[F64 pow(F64, F64), x, y];
 
 // Calculates the sine of the argument.
 //
 // This is wrapper of C's sin.
+//
+// # Parameters
+// * `x` - The angle, in radians.
 sin : F64 -> F64;
 sin = |x| FFI_CALL[F64 sin(F64), x];
 
 // Calculates the hyperbolic sine of the argument.
 // 
 // This is wrapper of C's sinh.
+//
+// # Parameters
+// * `x` - The argument of the hyperbolic sine.
 sinh : F64 -> F64;
 sinh = |x| FFI_CALL[F64 sinh(F64), x];
 
 // Calculates square root of the argument.
 // 
 // This is wrapper of C's sqrt.
+//
+// # Parameters
+// * `x` - The number to take the square root of.
 sqrt : F64 -> F64;
 sqrt = |x| FFI_CALL[F64 sqrt(F64), x];
 
 // Calculates the tangent of the argument.
 // 
 // This is wrapper of C's tan.
+//
+// # Parameters
+// * `x` - The angle, in radians.
 tan : F64 -> F64;
 tan = |x| FFI_CALL[F64 tan(F64), x];
 
 // Calculates the hyperbolic tangent of the argument.
 // 
 // This is wrapper of C's tanh.
+//
+// # Parameters
+// * `x` - The argument of the hyperbolic tangent.
 tanh : F64 -> F64;
 tanh = |x| FFI_CALL[F64 tanh(F64), x];
