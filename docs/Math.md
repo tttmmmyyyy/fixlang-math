@@ -10,17 +10,6 @@ This module requires `libm` installed.
 
 ### namespace Math
 
-#### _gcd_nonneg
-
-Type: `Std::I64 -> Std::I64 -> Std::I64`
-
-Calculates greatest common divisor of two non-negative integers.
-
-##### Parameters
-
-* `n` - One of the integers, non-negative.
-* `m` - The other integer, non-negative.
-
 #### acos
 
 Type: `Std::F64 -> Std::F64`
@@ -172,6 +161,12 @@ This is wrapper of C's fmod.
 * `y` - The divisor.
 * `x` - The dividend.
 
+##### Examples
+
+```fix
+assert_eq(|_|"", 7.0.fmod(3.0), 1.0)
+```
+
 #### frexp
 
 Type: `Std::F64 -> (Std::F64, Std::I32)`
@@ -210,6 +205,12 @@ This is wrapper of C's ldexp.
 
 * `e` - The exponent of two.
 * `x` - The number to multiply.
+
+##### Examples
+
+```fix
+assert_eq(|_|"", 3.0.ldexp(2_I32), 12.0) // 3 * 2^2
+```
 
 #### log
 
@@ -273,6 +274,12 @@ This is wrapper of C's pow.
 
 * `y` - The exponent.
 * `x` - The base.
+
+##### Examples
+
+```fix
+assert(|_|"", (2.0.pow(3.0) - 8.0).abs < 1.0e-12) // 2^3
+```
 
 #### round
 
