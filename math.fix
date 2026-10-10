@@ -130,6 +130,11 @@ round = |x| FFI_CALL[F64 round(F64), x];
 // # Parameters
 // * `y` - The divisor.
 // * `x` - The dividend.
+//
+// # Examples
+// ```fix
+// assert_eq(|_|"", 7.0.fmod(3.0), 1.0)
+// ```
 fmod : F64 -> F64 -> F64;
 fmod = |y, x| FFI_CALL[F64 fmod(F64, F64), x, y];
 
@@ -177,6 +182,11 @@ _gcd_nonneg = |n, m| (
 // # Parameters
 // * `e` - The exponent of two.
 // * `x` - The number to multiply.
+//
+// # Examples
+// ```fix
+// assert_eq(|_|"", 3.0.ldexp(2_I32), 12.0) // 3 * 2^2
+// ```
 ldexp : I32 -> F64 -> F64;
 ldexp = |e, x| FFI_CALL[F64 ldexp(F64, I32), x, e];
 
@@ -236,6 +246,11 @@ e64 = 2.718281828459045;
 // # Parameters
 // * `y` - The exponent.
 // * `x` - The base.
+//
+// # Examples
+// ```fix
+// assert(|_|"", (2.0.pow(3.0) - 8.0).abs < 1.0e-12) // 2^3
+// ```
 pow : F64 -> F64 -> F64;
 pow = |y, x| FFI_CALL[F64 pow(F64, F64), x, y];
 
